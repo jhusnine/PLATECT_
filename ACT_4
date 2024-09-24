@@ -1,6 +1,6 @@
 fun main() {
-    var running = true 
-    
+    var running = true
+
     while (running) {
         println("Select an operation: ")
         println("1. Add")
@@ -8,29 +8,32 @@ fun main() {
         println("3. Multiply")
         println("4. Divide")
         println("5. Quit")
-        
+       
         print("Enter your choice (1-5): ")
         val choice = readLine()
-        
+       
         if (choice != null && choice.all { it.isDigit() }) {
             val userChoice = choice.toInt()
-            
+           
             if (userChoice == 5) {
                 println("Quitting the program.")
-                running = false 
+                running = false
                 continue
             }
-            
+            if (userChoice < 1 || userChoice > 4) {
+                println("Invalid number. Please enter invalid number")
+                continue
+            }
             print("Enter first number: ")
             val number1 = readLine()?.toIntOrNull()
             print("Enter second number: ")
             val number2 = readLine()?.toIntOrNull()
-            
+           
             if (number1 == null || number2 == null) {
-              println("Invalid number input number. Please enter a valid number.")
+              println("Invalid number input. Please enter a valid number.")
               continue
             }
-        
+       
             when (userChoice) {
                 1 -> println("Result: ${number1 + number2}")
                 2 -> println("Result: ${number1 - number2}")
@@ -42,6 +45,7 @@ fun main() {
                        println("Result: ${number1 / number2}")
                    }
                 }
+                else -> println("Invalid choice. Please select a number between 1 and 5.")
             }
         } else {
             println("Invalid input. Please enter a valid number.")
